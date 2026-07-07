@@ -1,12 +1,22 @@
 """
-Project Configuration
+==========================================================
+Retail Customer Intelligence Platform
 
-Central location for all project paths.
+Configuration Module
+==========================================================
 """
 
 from pathlib import Path
 
+# --------------------------------------------------------
+# Project Root
+# --------------------------------------------------------
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# --------------------------------------------------------
+# Data Directories
+# --------------------------------------------------------
 
 DATA_DIR = PROJECT_ROOT / "data"
 
@@ -16,30 +26,92 @@ INTERIM_DATA_DIR = DATA_DIR / "interim"
 
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
+EXTERNAL_DATA_DIR = DATA_DIR / "external"
+
+# --------------------------------------------------------
+# Project Directories
+# --------------------------------------------------------
+
+SRC_DIR = PROJECT_ROOT / "src"
+
 DOCS_DIR = PROJECT_ROOT / "docs"
 
-MODEL_DIR = PROJECT_ROOT / "models"
+REPORTS_DIR = PROJECT_ROOT / "reports"
 
-REPORT_DIR = PROJECT_ROOT / "reports"
+MODELS_DIR = PROJECT_ROOT / "models"
 
-LOG_DIR = PROJECT_ROOT / "logs"
+LOGS_DIR = PROJECT_ROOT / "logs"
 
-# Automatically create required directories
+NOTEBOOKS_DIR = PROJECT_ROOT / "notebooks"
 
-for folder in [
+SQL_DIR = PROJECT_ROOT / "sql"
+
+TESTS_DIR = PROJECT_ROOT / "tests"
+
+DASHBOARD_DIR = PROJECT_ROOT / "dashboard"
+
+# --------------------------------------------------------
+# Automatically Create Directories
+# --------------------------------------------------------
+
+DIRECTORIES = [
+
+    DATA_DIR,
+
+    RAW_DATA_DIR,
 
     INTERIM_DATA_DIR,
 
     PROCESSED_DATA_DIR,
 
+    EXTERNAL_DATA_DIR,
+
     DOCS_DIR,
 
-    MODEL_DIR,
+    REPORTS_DIR,
 
-    REPORT_DIR,
+    MODELS_DIR,
 
-    LOG_DIR
+    LOGS_DIR,
 
-]:
+    SQL_DIR,
 
-    folder.mkdir(parents=True, exist_ok=True)
+    TESTS_DIR,
+
+    DASHBOARD_DIR
+
+]
+
+for directory in DIRECTORIES:
+
+    directory.mkdir(
+
+        parents=True,
+
+        exist_ok=True
+
+    )
+
+# --------------------------------------------------------
+# Random Seed
+# --------------------------------------------------------
+
+RANDOM_STATE = 42
+
+# --------------------------------------------------------
+# Export Settings
+# --------------------------------------------------------
+
+CSV_ENCODING = "utf-8"
+
+DATE_FORMAT = "%Y-%m-%d"
+
+# --------------------------------------------------------
+# Display Settings
+# --------------------------------------------------------
+
+PANDAS_DISPLAY_ROWS = 100
+
+PANDAS_DISPLAY_COLUMNS = 100
+
+PANDAS_FLOAT_FORMAT = "{:.2f}".format
